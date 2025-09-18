@@ -1,0 +1,10 @@
+FROM node:18
+
+WORKDIR /app
+COPY frontend/ /app/
+RUN npm install && npm run build
+
+# Serve with simple http server
+RUN npm install -g serve
+EXPOSE 5173
+CMD ["serve", "-s", "dist", "-l", "5173"]
